@@ -47,23 +47,23 @@ $(document).ready(function () {
 
         // Current Time
         var currentTime = moment();
-        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+        console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
         // Difference between the times
         var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
         console.log("DIFFERENCE IN TIME: " + diffTime);
 
         // Time apart (remainder)
-        var tRemainder = diffTime % tFrequency;
+        var tRemainder = diffTime % newFrequency;
         console.log(tRemainder);
 
         // Minute Until Train
-        var tMinutesTillTrain = tFrequency - tRemainder;
+        var tMinutesTillTrain = newFrequency - tRemainder;
         console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
         // Next Train
         var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-        console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+        console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
 
         //----------------------------------------------------------------------
         //display the new variables in a new tr
@@ -72,8 +72,8 @@ $(document).ready(function () {
             $("<td>").text(newDestination),
             $("<td>").text(newFrequency),
             // $("<td>").text(newFirstTrain),
-            $("<td>").text("next arrival"),
-            $("<td>").text("Minutes Away"),
+            $("<td>").text(nextTrain),
+            $("<td>").text(tMinutesTillTrain),
         )
 
         //append the new  row to the table
