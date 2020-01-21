@@ -15,10 +15,18 @@ $(document).ready(function () {
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
 
+    //make a clock in the jumbo tron
+    var clock = $(".clock")
+
+    setInterval(() => {
+        var now = moment().format("HH:mm:ss");
+        $(".clock").text(now);
+    }, 1000);
+    
     //write a click function for submitting the new train info
     $("#submit").on("click", function (e) {
         e.preventDefault();
-        console.log("submit");
+        // console.log("submit");
 
 
         //push the new info to the database
@@ -29,10 +37,16 @@ $(document).ready(function () {
             frequency: $("#frequency").val()
 
         });
+        //clear the input boxes after they have been pushed to the database
+        $("#trainform").reset()
+        // $("#trainname").text(" ")
+        // $("#destination").text(" ")
+        // $("#firsttrain").text(" ")
+        // $("#frequency").text(" ")
     })
     //use the child added function to take the values from the db
     database.ref().on("child_added", function (snapshot) {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         //and store them in new variables
 
         var newName = snapshot.val().name
@@ -43,7 +57,7 @@ $(document).ready(function () {
         //-------------------------------------------------------------------------
         // First Time (pushed back 1 year to make sure it comes before current time)
         var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
-        console.log(firstTimeConverted);
+        // console.log(firstTimeConverted);
 
         // Current Time
         var currentTime = moment();
