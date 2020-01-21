@@ -22,7 +22,7 @@ $(document).ready(function () {
         var now = moment().format("HH:mm:ss");
         $(".clock").text(now);
     }, 1000);
-    
+
     //write a click function for submitting the new train info
     $("#submit").on("click", function (e) {
         e.preventDefault();
@@ -35,15 +35,14 @@ $(document).ready(function () {
             destination: $("#destination").val(),
             firsttrain: $("#firsttrain").val(),
             frequency: $("#frequency").val()
-
         });
-        //clear the input boxes after they have been pushed to the database
-        $("#trainform").reset()
-        // $("#trainname").text(" ")
-        // $("#destination").text(" ")
-        // $("#firsttrain").text(" ")
-        // $("#frequency").text(" ")
+        //clear the text boxes after they've been pushed to the db
+        $("#trainname").val(""),
+        $("#destination").val(""),
+        $("#firsttrain").val(""),
+        $("#frequency").val("")
     })
+
     //use the child added function to take the values from the db
     database.ref().on("child_added", function (snapshot) {
         // console.log(snapshot.val());
@@ -78,6 +77,7 @@ $(document).ready(function () {
         // Next Train
         var nextTrain = moment().add(tMinutesTillTrain, "minutes");
         console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
+        nextTrain = nextTrain.format("HH:mm");
 
         //----------------------------------------------------------------------
         //display the new variables in a new tr
@@ -92,6 +92,7 @@ $(document).ready(function () {
 
         //append the new  row to the table
         $(".tbody").append(newRow);
+
     });
 
 })

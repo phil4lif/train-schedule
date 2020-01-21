@@ -1,11 +1,12 @@
 .clock {
     width: 300px;
     height: 100px;
-    background-color: black;
+    background-color: rgb(48, 180, 158);
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: greenyellow;
+    color: rgb(48, 35, 231);
     font-size: 3em;
+    float: right;
 }
