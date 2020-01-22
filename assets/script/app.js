@@ -13,12 +13,14 @@ $(document).ready(function () {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+    //declare a database variable
     var database = firebase.database();
     //an array that will be used in the updating function
     var trainArr = [];
     //make a clock in the jumbo tron
     var clock = $(".clock")
-
+    //a set interval function to display current time to the second so that users
+    //can easily see what time it is
     setInterval(() => {
         var now = moment().format("HH:mm:ss");
         $(".clock").text(now);
@@ -61,23 +63,23 @@ $(document).ready(function () {
         
         // Current Time
         var currentTime = moment();
-        console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+        // console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
 
         // Difference between the times
         var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-        console.log("DIFFERENCE IN TIME: " + diffTime);
+        // console.log("DIFFERENCE IN TIME: " + diffTime);
 
         // Time apart (remainder)
         var tRemainder = diffTime % newFrequency;
-        console.log(tRemainder);
+        // console.log(tRemainder);
 
         // Minute Until Train
         var tMinutesTillTrain = newFrequency - tRemainder;
-        console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+        // console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
         // Next Train
         var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-        console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
+        // console.log("ARRIVAL TIME: " + moment(nextTrain).format("HH:mm"));
         nextTrain = nextTrain.format("HH:mm");
 
         //----------------------------------------------------------------------
@@ -101,7 +103,7 @@ $(document).ready(function () {
             firstTime : snapshot.val().firsttrain,
             newFrequency : snapshot.val().frequency
             })
-        console.log(trainArr)
+        // console.log(trainArr)
     });
     //a function to update the displayed minutes until the next train, and the displayed next arrival time, that will update every minute
     function update() {
@@ -147,7 +149,7 @@ $(document).ready(function () {
 
 //use a set interval function to invoke the update function every minute
 setInterval(() => {
-    console.log("update func")
+    // console.log("update func")
     update()
 }, 60000);
 
