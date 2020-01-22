@@ -108,7 +108,7 @@ $(document).ready(function () {
         $(".tbody").empty();
         for( var i = 0; i < trainArr.length; i++){
             var newName = trainArr[i].newName
-            var newDestination = trainArr[i].newname
+            var newDestination = trainArr[i].newDestination
             var firstTime = trainArr[i].firstTime
             var newFrequency = trainArr[i].newFrequency
         
