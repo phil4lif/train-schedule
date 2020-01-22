@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Train Schedule</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Added Moment JS -->
@@ -20,7 +19,9 @@
     <!-- Firebase References -->
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
-        <!-- CDN for firebase auth -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
+        <!-- CDN for firebase auth
         <script src="https://www.gstatic.com/firebasejs/ui/4.3.0/firebase-ui-auth.js"></script>
         <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.3.0/firebase-ui-auth.css">
         <script type="text/javascript">
@@ -47,7 +48,7 @@
             var ui = new firebaseui.auth.AuthUI(firebase.auth());
             // The start method will wait until the DOM is loaded.
             ui.start('#firebaseui-auth-container', uiConfig);
-          </script>
+          </script> -->
 </head>
 
 <body>
@@ -99,7 +100,9 @@
             </div>
             <button type="button" class="btn btn-primary" id="submit">Submit</button>
         </form>
+        <div class="bottom"></div>
     </div>
+    
     <script src="assets/script/app.js"></script>
 </body>
 

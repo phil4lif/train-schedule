@@ -10,3 +10,17 @@
     font-size: 3em;
     float: right;
 }
+
+body {
+    background-image: url("../images/vintage-wallpaper.png");
+    font-weight: 700;
+}
+.bottom{
+    height: 250px;
+}
+div {
+    background-color: papayawhip;
+}
+.jumbotron{
+    background-color: papayawhip;
+}
