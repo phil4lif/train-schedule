@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Schedule</title>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Added Moment JS -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- Bootstrap CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- link to moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <!-- Firebase References -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+        <script src="https://www.gstatic.com/firebasejs/ui/4.3.0/firebase-ui-auth.js"></script>
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.3.0/firebase-ui-auth.css">
+           
+        
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div class="clock"></div>
+                <h1 class="display-3">Train Tracker</h1>
+                <p class="lead">Never miss your train again!</p>
+            </div>
+        </div>
+        <table class="table table-hover" style="width: 80%; margin-left: 10%">
+            <thead>
+                <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency (min)</th>
+                    <th>Next Arrival</th>
+                    <th>Minutes Away</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr>
+                    <td class="name"></td>
+                    <td class="destination"> </td>
+                    <td class="frequency"></td>
+                    <td class="nextarrival"></td>
+                    <td class="minutesaway"></td>
+                </tr>
+
+            </tbody>
+        </table>
+        <form id="trainform" style="width: 80%; margin-left: 10%">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Name</label>
+                <input type="text" class="form-control" id="trainname" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Destination</label>
+                <input type="text" class="form-control" id="destination" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput3">First Train Time HH:mm</label>
+                <input type="text" class="form-control" id="firsttrain" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput4">Frequency Minutes</label>
+                <input type="text" class="form-control" id="frequency" placeholder="">
+            </div>
+            <button type="button" class="btn btn-primary" id="submit">Submit</button>
+        </form>
+        <div class="bottom"></div>
+    </div>
+    
+    <script src="assets/script/app.js"></script>
+</body>
+
+</html>
