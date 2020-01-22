@@ -1,12 +1,12 @@
 .clock {
     width: 300px;
     height: 100px;
-    background-color: rgb(48, 180, 158);
+    background-color: rgb(71, 68, 224);
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgb(48, 35, 231);
+    color: papayawhip;
     font-size: 3em;
     float: right;
 }
@@ -23,4 +23,7 @@ div {
 }
 .jumbotron{
     background-color: papayawhip;
+}
+.minutesTill{
+    background-color: yellow;
 }

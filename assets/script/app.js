@@ -14,7 +14,8 @@ $(document).ready(function () {
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     var database = firebase.database();
-
+    //an array that will be used in the updating function
+    var trainArr = [];
     //make a clock in the jumbo tron
     var clock = $(".clock")
 
@@ -57,7 +58,7 @@ $(document).ready(function () {
         // First Time (pushed back 1 year to make sure it comes before current time)
         var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
         // console.log(firstTimeConverted);
-
+        
         // Current Time
         var currentTime = moment();
         console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
@@ -86,13 +87,68 @@ $(document).ready(function () {
             $("<td>").text(newDestination),
             $("<td>").text(newFrequency),
             // $("<td>").text(newFirstTrain),
-            $("<td>").text(nextTrain),
-            $("<td>").text(tMinutesTillTrain),
+            $("<td>").text(nextTrain).addClass("nextTrain"),
+            $("<td>").text(tMinutesTillTrain).addClass("minutesTill")
         )
 
         //append the new  row to the table
         $(".tbody").append(newRow);
 
+        //push all of the data from the database to our trainarray
+        trainArr.push({
+            newName : snapshot.val().name,
+            newDestination : snapshot.val().destination,
+            firstTime : snapshot.val().firsttrain,
+            newFrequency : snapshot.val().frequency
+            })
+        console.log(trainArr)
     });
+    //a function to update the displayed minutes until the next train, and the displayed next arrival time, that will update every minute
+    function update() {
+        $(".tbody").empty();
+        for( var i = 0; i < trainArr.length; i++){
+            var newName = trainArr[i].newName
+            var newDestination = trainArr[i].newname
+            var firstTime = trainArr[i].firstTime
+            var newFrequency = trainArr[i].newFrequency
+        
+        //repeating the earlier calculations to make the new table rows that will replace the ones we emptied every minute
+        var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+        
+        // Current Time
+        var currentTime = moment();
+        
+        // Difference between the times
+        var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+       
+        // Time apart (remainder)
+        var tRemainder = diffTime % newFrequency;
+        
+        // Minute Until Train
+        var tMinutesTillTrain = newFrequency - tRemainder;
+   
+        // Next Train
+        var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+        
+        nextTrain = nextTrain.format("HH:mm");
+
+        var newRow = $("<tr>").append(
+            $("<td>").text(newName),
+            $("<td>").text(newDestination),
+            $("<td>").text(newFrequency),
+            // $("<td>").text(newFirstTrain),
+            $("<td>").text(nextTrain).addClass("nextTrain"),
+            $("<td>").text(tMinutesTillTrain).addClass("minutesTill")
+        )
+        $(".tbody").append(newRow);
+
+    }   
+    }
+
+//use a set interval function to invoke the update function every minute
+setInterval(() => {
+    console.log("update func")
+    update()
+}, 60000);
 
 })
