@@ -16,7 +16,7 @@
 
     <!-- The surrounding HTML is left untouched by FirebaseUI.
      Your app may use that space for branding, controls and other customizations.-->
-    <h1>Welcome to My Awesome App</h1>
+    <h1>Please login with Google or Github, to continue to the Train Tracker web app</h1>
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
     <!-- jQuery -->
@@ -81,9 +81,10 @@
                 auth_type: 'reauthenticate'
             },
             // Terms of service url.
-            tosUrl: '<your-tos-url>',
+            tosUrl: 'https://phil4lif.github.io/train-schedule/tos.html',
             // Privacy policy url.
-            privacyPolicyUrl: '<your-privacy-policy-url>'
+            tosUrl: 'https://phil4lif.github.io/train-schedule/privacypolicy.html',
+            privacyPolicyUrl: ''
         };
         // The start method will wait until the DOM is loaded.
         ui.start('#firebaseui-auth-container', uiConfig);
