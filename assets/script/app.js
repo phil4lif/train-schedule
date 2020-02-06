@@ -70,7 +70,7 @@ $(document).ready(function () {
     database.ref().on("child_added", function (snapshot) {
         // console.log(snapshot.val());
         //and store them in new variables
-
+        if(snapshot.val().userid === userId){
         var newName = snapshot.val().name
         var newDestination = snapshot.val().destination
         var firstTime = snapshot.val().firsttrain
@@ -115,7 +115,7 @@ $(document).ready(function () {
 
         //append the new  row to the table
         $(".tbody").append(newRow);
-
+    }
         //push all of the data from the database to our trainarray
         trainArr.push({
             newName : snapshot.val().name,
