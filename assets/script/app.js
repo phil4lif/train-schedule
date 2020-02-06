@@ -52,11 +52,12 @@ $(document).ready(function () {
         var autoId = database.ref().push().key
         console.log(autoId)
         //push the new info to the database
-        database.ref().set({
+        database.ref().child(autoId).set({
             name: $("#trainname").val(),
             destination: $("#destination").val(),
             firsttrain: $("#firsttrain").val(),
-            frequency: $("#frequency").val()
+            frequency: $("#frequency").val(),
+            userid: userId
         });
         //clear the text boxes after they've been pushed to the db
         $("#trainname").val(""),
