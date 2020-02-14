@@ -58,6 +58,7 @@ $(document).ready(function () {
             firsttrain: $("#firsttrain").val(),
             frequency: $("#frequency").val(),
             userid: userId
+            
         });
         //clear the text boxes after they've been pushed to the db
         $("#trainname").val(""),
