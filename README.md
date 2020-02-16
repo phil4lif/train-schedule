@@ -1,11 +1,12 @@
 #Train Tracker
 
-This web application requires the user to authenticate using either github or google.
+This application is for users to enter data about specific trains or busses that they need to display.  The trains that the user adds will be displayed in a table and will update every minute with accurate schedule information.
 
-Once they have done so it will load the train schedule page that will display trains and their schedule data.  Every minute the table will be updated so that the "minutes until next train" and "next train time" are correct.
+##How to Use
+This web application requires the user to authenticate using either github or google.  By doing so they are able to save the train schedule information specific to their user's auth id.
 
-I've also added a large clock to the page, so the user can easily see the current time.
-
-A user can add any trains that they would like to see displayed in the table.  
-
-This app uses bootstrap, jquery, momentjs and firebase.
+#Built With
+Bootstrap
+JQuery
+Momentjs
+Firebase
